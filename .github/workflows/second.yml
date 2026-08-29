@@ -9,3 +9,9 @@ jobs:
     steps:
       - name: Say Hello
         run: echo "Hello, from second workflow"
+
+      - name: Install
+        env:
+          APP_ENV: dev
+          DB_PASS: ${{secrets.DB_PASS}}
+        run: echo "Environment $APP_ENV using $DB_PASS"
