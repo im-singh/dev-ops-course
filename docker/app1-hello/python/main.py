@@ -9,7 +9,7 @@ HOSTNAME = socket.gethostname()
 @app.get("/")
 def hello():
     return jsonify({
-        "message": "Hello from Simple App (Python Flask)",
+        "message": "Hello from Simple App (Python Flask) V1.0.1",
         "env": ENV,
         "container": HOSTNAME
     })
