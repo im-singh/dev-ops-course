@@ -20,7 +20,7 @@ jobs:
             
       - name: Build with Maven
         working-directory: docker/app1-hello/springboot/hello-spring
-        run: mvn - B clean verify
+        run: mvn -gB clean verify
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v7
