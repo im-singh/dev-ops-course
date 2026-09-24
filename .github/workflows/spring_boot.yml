@@ -43,13 +43,24 @@ jobs:
           java-version: 21
 
       - name: Build JAR from docker
-        working-directory: ./spring-boot-app
-        run: echo "Building the project with Maven"
+        working-directory: docker/app1-hello/springboot/hello-spring
+        run: mvn -B clean package -DskipTests
 
       - name: Login to DockerHub
-        run: echo "Uploading test report"
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and Push Docker Image
-        run: echo "Building and pushing Docker image"
+        uses: docker/build-push-action@v6
+        with:
+          context: ./docker/app1-hello/springboot/hello-spring
+          push:  true
+          tags: ${{ secrets.DOCKER_USERNAME }}/hello-spring:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/hello-spring:{{github.sha}}
+          tags: ${{ secrets.DOCKER_USERNAME }}/hello-spring:{{github.ref_name}}
+
+
   
   
