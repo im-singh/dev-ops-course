@@ -2,7 +2,9 @@
 name: Hello Spring Boot
 
 on:
-  push
+  # push
+  [workflow_dispatch]
+
 
 jobs:
   build-test:
