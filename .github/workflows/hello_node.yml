@@ -1,4 +1,4 @@
-name: second CI
+name: Hello Node.js
 
 on:
   push:
