@@ -2,7 +2,12 @@ name: Hello Node.js
 
 on:
   push:
-    # path:""
+
+    branches:
+      - main
+    path:
+      - docker/app1-hello/node/**
+      
   workflow_dispatch:
 
 jobs:
